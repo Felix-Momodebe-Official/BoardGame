@@ -1,0 +1,35 @@
+
+
+name: Maven-Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Step 1 - Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Step 2 - Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Step 3 - List the current directory
+      run: ls -a
+
+    - name: Step 4 - The target folder contains;
+      run: |
+        cd target
+        ls -a
+  
+    
