@@ -30,7 +30,7 @@ jobs:
     - name: Step 3 - Build Docker Image
       run: |
         docker build -f Dockerfile -t my-image:latest .
-        docker push felix081/github-action-demo:latest
+        docker push felix081/my-image:latest
 
     - name: Step 3a - List the current directory
       run: ls
