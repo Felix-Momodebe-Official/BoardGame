@@ -25,28 +25,26 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Step 2 - Restore Maven cache
-      uses: skjolber/maven-cache-github-action@v1
+    - name: Step 2 - Set up a cache for maven
+      uses: actions/cache@v2
       with:
-            step: restore
+       path: ~/.m2
+       key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+       restore-keys: ${{ runner.os }}-m2
+       
     - name: Step 3 - Build with Maven
       run: mvn -B package --file pom.xml
-    
-    - name: Step 4 - Save Maven cache
-      uses: skjolber/maven-cache-github-action@v1
-      with:
-          step: save
 
 
-    - name: Step 5 - List the current directory
+    - name: Step 4 - List the current directory
       run: ls
 
-    - name: Step 6 - The target folder contains;
+    - name: Step 5 - The target folder contains;
       run: |
         cd target
         ls
 
-    - name: Step 7 - List the Environmental variables
+    - name: Step 6 - List the Environmental variables
       run: env
 
     
