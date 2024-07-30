@@ -39,7 +39,7 @@ jobs:
     - name: Step 4 - List the current directory
       run: ls
 
-    - name: Step 5 - The target folder contains;
+    - name: Step 5 - The target folder contains
       run: |
         cd target
         ls
