@@ -34,5 +34,8 @@ jobs:
       run: |
         cd target
         ls
+
+    - name: Step 5 - List the Environmental variables
+      run: env
   
     
