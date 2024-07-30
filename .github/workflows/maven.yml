@@ -28,11 +28,11 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Step 3 - List the current directory
-      run: ls -a
+      run: ls
 
     - name: Step 4 - The target folder contains;
       run: |
         cd target
-        ls -a
+        ls
   
     
