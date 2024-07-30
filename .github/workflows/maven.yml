@@ -28,7 +28,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Step 3 - Build Docker Image
-      run: docker build -f Dockerfile --context . -t my-image:latest .
+      run: docker build -f Dockerfile -t my-image:latest .
 
     - name: Step 3a - List the current directory
       run: ls
