@@ -25,27 +25,30 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    
+       
+    - name: Step 3 - Build with Maven
+      run: |
+          mvn -B package --file pom.xml
+          mkdir staging && cp target/*.jar staging
+
     - name: Step 2 - Set up a cache for maven
       uses: actions/cache@v2
       with:
        path: ~/.m2
        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
        restore-keys: ${{ runner.os }}-m2
-       
-    - name: Step 3 - Build with Maven
-      run: mvn -B package --file pom.xml
+
+    - name: Step 4 - Persist workflow data as artifacts
+      uses: actions/upload-artifacts@v2
+      with:
+        name: github-actions-artifact
+        path: staging
+
+    
+  
 
 
-    - name: Step 4 - List the current directory
-      run: ls
-
-    - name: Step 5 - The target folder contains
-      run: |
-        cd target
-        ls
-
-    - name: Step 6 - List the Environmental variables
-      run: env
 
     
         
