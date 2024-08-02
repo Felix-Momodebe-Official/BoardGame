@@ -5,7 +5,7 @@ name: Maven-Build.
 on:
 
   schedule:
-    - cron: "* * * * *"
+    - cron: '* * * * *'
   # push:
   #   branches: [ "main" ]
   # pull_request:
